@@ -1,3 +1,6 @@
+/**
+ * Created by Scott on 2016-7-27.
+ */
 const INCREMENT = "increment";
 const initialState={count:0};
 

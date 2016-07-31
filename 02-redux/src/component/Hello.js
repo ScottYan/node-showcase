@@ -7,15 +7,6 @@ import {increment as actIncrement} from '../redux/component/Hello'
 
 export default class HelloMessage extends React.Component{
 
-    render(){
-        return (
-            <div>
-                <div>{this.state.count}</div>
-                <input type="button" onClick={this.increment} value="click me" />
-            </div>
-        );
-    }
-
     componentWillMount(){
       this.syncState();
       store.subscribe(()=>{
@@ -29,6 +20,15 @@ export default class HelloMessage extends React.Component{
 
     increment(){
       store.dispatch(actIncrement());
+    }
+
+    render(){
+        return (
+            <div>
+                <div>{this.state.count}</div>
+                <input type="button" onClick={this.increment} value="click me" />
+            </div>
+        );
     }
 
 }
