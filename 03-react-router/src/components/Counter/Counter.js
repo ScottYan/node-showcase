@@ -2,10 +2,10 @@
  * Created by Scott on 16-7-27.
  */
 import React,{PropTypes} from 'react';
-import store from '../redux/createStore';
-import {increment as actIncrement} from '../redux/component/Hello'
+import store from '../../redux/createStore';
+import {increment as actIncrement} from '../../redux/modules/Counter'
 
-export default class HelloMessage extends React.Component{
+export default class Counter extends React.Component{
 
     componentWillMount(){
       this.syncState();
@@ -15,7 +15,7 @@ export default class HelloMessage extends React.Component{
     }
 
     syncState(){
-      this.setState(store.getState().Hello);
+      this.setState(store.getState().Counter);
     }
 
     increment(){

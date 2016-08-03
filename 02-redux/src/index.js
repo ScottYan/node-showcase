@@ -3,9 +3,9 @@
  */
 import React from "react";
 import ReactDom from "react-dom";
-import Hello from './component/Hello'
+import Counter from './components/Counter'
 
 ReactDom.render(
-    <Hello></Hello>,
+    <Counter></Counter>,
     document.getElementById("root")
 );
