@@ -14,7 +14,7 @@ export default React.createClass({
     return (
       <div>
         <Counter></Counter>
-        <input type="button" value="app" onClick={this.redirectByCode} />
+        <input type="button" value="to home" onClick={this.redirectByCode} />
       </div>
     )
   }

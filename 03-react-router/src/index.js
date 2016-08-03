@@ -3,10 +3,11 @@
  */
 import React from "react";
 import ReactDom from "react-dom";
-import getRoutes from './routes';
-
+import {Router,hashHistory} from 'react-router';
+import routes from './routes';
 
 ReactDom.render(
-    getRoutes(),
+    <Router history={hashHistory} routes={routes}>
+    </Router>,
     document.getElementById("root")
 );
