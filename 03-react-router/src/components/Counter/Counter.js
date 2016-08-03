@@ -8,10 +8,16 @@ import {increment as actIncrement} from '../../redux/modules/Counter'
 export default class Counter extends React.Component{
 
     componentWillMount(){
+      //console.log('counter will mount');
       this.syncState();
-      store.subscribe(()=>{
+      this.unsubscribe=store.subscribe(()=>{
         this.syncState();
       });
+    }
+
+    componentWillUnmount(){
+      //console.log('counter will unmount.');
+      this.unsubscribe();
     }
 
     syncState(){
