@@ -1,34 +1,24 @@
-/**
- * Created by Scott on 16-7-27.
- */
-import React,{PropTypes} from 'react';
-import store from '../redux/createStore';
-import {increment as actIncrement} from '../redux/modules/Counter'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import * as actionCreators from '../actions'
 
-export default class Counter extends React.Component{
-
-    componentWillMount(){
-      this.syncState();
-      store.subscribe(()=>{
-        this.syncState();
-      });
-    }
-
-    syncState(){
-      this.setState(store.getState().Counter);
-    }
-
-    increment(){
-      store.dispatch(actIncrement());
-    }
-
-    render(){
-        return (
-            <div>
-                <div>{this.state.count}</div>
-                <input type="button" onClick={this.increment} value="click me" />
-            </div>
-        );
-    }
-
+const Counter = (props) => {
+  return (
+    <div>
+      <label>{props.value}</label>
+      <br />
+      <button onClick={props.add}>Add</button>
+      <button onClick={props.subtract}>Subtract</button>
+    </div>
+  )
 }
+
+const mapStateToProps = (state) => {
+  return {...state.counter}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(actionCreators,dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Counter)
