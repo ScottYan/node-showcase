@@ -4,19 +4,23 @@ import { connect } from 'react-redux'
 import SearchRepoComponent from '../../components/SearchRepo/SearchRepo'
 
 const SearchRepo = (props) => {
+  const eventHandler = {
+    onFilterChange: (e) => {
+      props.dispatch({
+        type: 'searchRepo/setFilter',
+        payload: e.target.value
+      })
+    },
+    onSearch:
+    () => {
+      props.dispatch({
+        type: 'searchRepo/doSearch'
+      })
+    }
+  }
   return (
     <SearchRepoComponent
-      onFilterChange={(e) => {
-        props.dispatch({
-          type: 'searchRepo/setFilter',
-          payload: e.target.value
-        })
-      }}
-      onSearch={() => {
-        props.dispatch({
-          type: 'searchRepo/doSearch'
-        })
-      }}
+      {...eventHandler}
       {...props}
     />
   )
